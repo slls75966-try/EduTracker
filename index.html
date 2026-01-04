@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon App Locale</title>
+    <title>Mon Emploi du Temps</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <div class="container">
         <header>
-            <h1 id="welcome-msg">Bienvenue !</h1>
+            <h1 id="welcome-msg">Chargement...</h1>
+            <p id="current-date">--/--/----</p>
         </header>
         
-        <main>
-            <div class="card">
-                <p>Aujourd'hui, nous sommes le :</p>
-                <h2 id="current-date">--/--/----</h2>
-            </div>
+        <main class="card">
+            <h3>Matières du jour</h3>
+            <ul id="subjects-list">
+                </ul>
         </main>
     </div>
 
-    <script src="js/date.js?v=1.0"></script>
-    <script src="js/timetable.js?v=1.0"></script>
+    <script src="js/date.js" defer></script>
+    <script src="js/timetable.js" defer></script>
 </body>
 </html>
