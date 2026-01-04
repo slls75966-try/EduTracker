@@ -1,4 +1,4 @@
-// js/cours.js
+// js/timetable.js
 const emploiDuTemps = {
     "lundi": ["Mathématiques", "Français"],
     "mardi": ["Physique", "Anglais"],
