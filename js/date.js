@@ -1,20 +1,15 @@
 // js/date.js
-function afficherDate() {
+document.addEventListener('DOMContentLoaded', () => {
     const dateElement = document.getElementById('current-date');
     const welcomeElement = document.getElementById('welcome-msg');
     
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const dateNow = new Date();
+    const now = new Date();
     
-    if (dateElement) {
-        dateElement.textContent = dateNow.toLocaleDateString('fr-FR', options);
-    }
+    // Affichage de la date
+    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    dateElement.textContent = now.toLocaleDateString('fr-FR', options);
 
-    if (welcomeElement) {
-        const heure = dateNow.getHours();
-        welcomeElement.textContent = heure >= 18 ? "Bonsoir !" : "Bonjour !";
-    }
-}
-
-// On lance la fonction au chargement
-window.addEventListener('load', afficherDate);
+    // Message de bienvenue
+    const hour = now.getHours();
+    welcomeElement.textContent = (hour < 18) ? "Bonjour !" : "Bonsoir !";
+});
