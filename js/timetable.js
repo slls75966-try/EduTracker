@@ -1,41 +1,36 @@
 // js/timetable.js
-const emploiDuTemps = {
-    "lundi": ["Mathématiques", "Français"],
-    "mardi": ["Physique", "Anglais"],
-    "mercredi": ["SVT"],
-    "jeudi": ["Mathématiques", "Histoire"],
-    "vendredi": ["Informatique", "Sport"],
+const timetable = {
+    "lundi": ["Maths", "Physique", "Français"],
+    "mardi": ["Anglais", "Histoire", "Sport"],
+    "mercredi": ["SVT", "Philo"],
+    "jeudi": ["Maths", "Anglais", "Géographie"],
+    "vendredi": ["Informatique", "Espagnol"],
     "samedi": [],
     "dimanche": []
 };
 
-function chargerCours() {
+document.addEventListener('DOMContentLoaded', () => {
     const list = document.getElementById('subjects-list');
-    if (!list) return;
+    const today = new Date().toLocaleDateString('fr-FR', { weekday: 'long' }).toLowerCase();
+    const subjects = timetable[today] || [];
 
-    const jour = new Date().toLocaleDateString('fr-FR', { weekday: 'long' }).toLowerCase();
-    const cours = emploiDuTemps[jour] || [];
-
-    if (cours.length === 0) {
-        list.innerHTML = "<li>Aucun cours aujourd'hui.</li>";
+    if (subjects.length === 0) {
+        list.innerHTML = "<li>Libre aujourd'hui ! 🌴</li>";
         return;
     }
 
-    list.innerHTML = cours.map((matiere, index) => `
-        <li style="display:flex; justify-content:space-between; margin-bottom:10px;">
-            <span>${matiere}</span>
-            <button onclick="validerCours(this)" class="btn-check">Confirmer</button>
+    list.innerHTML = subjects.map(subject => `
+        <li class="subject-item">
+            <span>${subject}</span>
+            <button class="btn-confirm" onclick="markAsDone(this)">Confirmer</button>
         </li>
     `).join('');
-}
+});
 
-function validerCours(btn) {
-    btn.textContent = "Fait ✅";
-    btn.style.background = "#27ae60";
-    btn.disabled = true;
-    btn.parentElement.style.textDecoration = "line-through";
-    btn.parentElement.style.color = "gray";
+function markAsDone(button) {
+    const li = button.parentElement;
+    li.classList.add('done');
+    button.textContent = "Fait ✅";
+    button.disabled = true;
+    button.style.backgroundColor = "#2ecc71";
 }
-
-// On lance la fonction au chargement
-window.addEventListener('load', chargerCours);
