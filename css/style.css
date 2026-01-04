@@ -1,0 +1,45 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px; /* Taille typique d'un smartphone */
+    text-align: center;
+}
+
+header h1 {
+    color: #4a90e2;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+#current-date {
+    margin-top: 10px;
+    color: #2c3e50;
+}
