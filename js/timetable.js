@@ -6,7 +6,7 @@ const timetable = {
     "jeudi": ["Maths", "Anglais", "Géographie"],
     "vendredi": ["Informatique", "Espagnol"],
     "samedi": [],
-    "dimanche": []
+    "dimanche": ["Maths", "Français"]
 };
 
 document.addEventListener('DOMContentLoaded', () => {
