@@ -1,45 +1,60 @@
-/* Reset de base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-    background-color: #f0f2f5;
+    background-color: #f4f7f6;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #333;
+    padding-top: 50px;
 }
 
 .container {
     width: 90%;
-    max-width: 400px; /* Taille typique d'un smartphone */
-    text-align: center;
+    max-width: 450px;
 }
 
-header h1 {
-    color: #4a90e2;
-    margin-bottom: 20px;
-    font-size: 2rem;
+header {
+    text-align: center;
+    margin-bottom: 30px;
 }
+
+header h1 { color: #2c3e50; font-size: 1.8rem; }
+header p { color: #7f8c8d; font-size: 1.1rem; }
 
 .card {
     background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.card p {
-    font-size: 1.1rem;
-    color: #666;
+#subjects-list {
+    list-style: none;
+    margin-top: 15px;
 }
 
-#current-date {
-    margin-top: 10px;
-    color: #2c3e50;
+.subject-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.btn-confirm {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.done {
+    text-decoration: line-through;
+    color: #bdc3c7;
 }
