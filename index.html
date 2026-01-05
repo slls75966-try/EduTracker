@@ -25,17 +25,40 @@
     <script src="js/timetable.js?v=1.0" defer></script>
 
     <div id="mon-volet" class="overlay">
-    
     <div class="fenetre-contenu">
-        <h2>Rapport de cours</h2>
-        <p id="nom-matiere-affichage"></p>
-        
-        <hr>
-        
-        <p>Contenu du rapport à venir...</p>
-        
-        <button onclick="fermerMaFenetre()">Fermer</button>
-    </div>
+    <h2 id="nom-matiere-affichage">Matière</h2>
+    <hr>
+
+    <form id="form-rapport">
+        <div class="section-alerte">
+            <label>
+                <input type="checkbox" id="cours-annule" onchange="gererAnnulation()"> 
+                ⚠️ Le cours n'a pas eu lieu
+            </label>
+        </div>
+
+        <div id="groupe-activites">
+            <p><strong>Activités faites :</strong></p>
+            <div class="grille-choix">
+                <label><input type="checkbox" value="Leçon"> Leçon</label>
+                <label><input type="checkbox" value="Exercices"> Exercices</label>
+                <label><input type="checkbox" value="Examen"> Examen</label>
+                <label><input type="checkbox" value="Révision"> Révision</label>
+            </div>
+
+            <p><strong>Devoirs à la maison :</strong></p>
+            <div class="choix-devoirs">
+                <label><input type="radio" name="devoirs" value="Oui"> Oui</label>
+                <label><input type="radio" name="devoirs" value="Non" checked> Non</label>
+            </div>
+        </div>
+
+        <div class="boutons-action">
+            <button type="button" onclick="fermerMaFenetre()" class="btn-secondaire">Annuler</button>
+            <button type="submit" class="btn-principal">Enregistrer</button>
+        </div>
+    </form>
+    </div>  
     </div>
 </body>
 </html>
