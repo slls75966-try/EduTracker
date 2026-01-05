@@ -9,6 +9,9 @@ const timetable = {
     "dimanche": ["Maths", "Français"]
 };
 
+// Variable globale pour mémoriser sur quel bouton on a cliqué
+let boutonSelectionne = null;
+
 document.addEventListener('DOMContentLoaded', () => {
     const list = document.getElementById('subjects-list');
     const today = new Date().toLocaleDateString('fr-FR', { weekday: 'long' }).toLowerCase();
@@ -22,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     list.innerHTML = subjects.map(subject => `
         <li class="subject-item">
             <span>${subject}</span>
-            <button class="btn-confirm" onclick="ouvrirMaFenetre('${subject}')">Remplir</button>
+            <button class="btn-confirm" onclick="ouvrirMaFenetre('${subject}',this)">Remplir</button>
         </li>
     `).join('');
 });
@@ -36,7 +39,7 @@ function markAsDone(button) {
 }
 
 // Fonction pour OUVRIR la fenêtre
-function ouvrirMaFenetre(nomMatiere) {
+function ouvrirMaFenetreold(nomMatiere) {
     // 1. On récupère l'élément du calque par son ID
     const volet = document.getElementById('mon-volet');
     
@@ -47,8 +50,60 @@ function ouvrirMaFenetre(nomMatiere) {
     volet.style.display = "block";
 }
 
-// Fonction pour FERMER la fenêtre
+function ouvrirMaFenetre(nomMatiere, elementBouton) {
+    boutonSelectionne = elementBouton; // On mémorise le bouton
+    
+    document.getElementById('nom-matiere-affichage').textContent = nomMatiere;
+    document.getElementById('mon-volet').style.display = "block";
+    
+    // On s'assure que le formulaire est réinitialisé à l'ouverture
+    document.getElementById('form-rapport').reset();
+    gererAnnulation(); // Remet l'opacité normale
+}
+
+// 4. Fonction pour FERMER la fenêtre
 function fermerMaFenetre() {
     const volet = document.getElementById('mon-volet');
     volet.style.display = "none";
 }
+
+// 5. Gérer l'affichage si le cours est annulé
+function gererAnnulation() {
+    const estAnnule = document.getElementById('cours-annule').checked;
+    const groupeActivites = document.getElementById('groupe-activites');
+    
+    if (estAnnule) {
+        groupeActivites.classList.add('desactive');
+    } else {
+        groupeActivites.classList.remove('desactive');
+    }
+}
+
+
+// 6. Gérer l'ENREGISTREMENT du formulaire
+document.getElementById('form-rapport').onsubmit = function(event) {
+    event.preventDefault(); // Empêche le rechargement de la page
+
+    const estAnnule = document.getElementById('cours-annule').checked;
+
+    if (boutonSelectionne) {
+        const ligneMatiere = boutonSelectionne.parentElement;
+
+        if (estAnnule) {
+            // Style si le cours n'a pas eu lieu
+            ligneMatiere.style.color = "#e74c3c"; // Rouge
+            boutonSelectionne.textContent = "Annulé ❌";
+        } else {
+            // Style si le cours est fait
+            ligneMatiere.classList.add('done'); // Utilise la classe CSS .done
+            boutonSelectionne.textContent = "Fait ✅";
+            boutonSelectionne.style.backgroundColor = "#95a5a6";
+        }
+
+        // Désactiver le bouton après validation
+        boutonSelectionne.disabled = true;
+    }
+
+    // Fermer la fenêtre après l'enregistrement
+    fermerMaFenetre();
+};
