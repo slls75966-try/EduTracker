@@ -56,7 +56,8 @@ function ouvrirMaFenetre(nomMatiere, elementBouton) {
     document.getElementById('nom-matiere-affichage').textContent = nomMatiere;
     document.getElementById('mon-volet').style.display = "block";
     
-    // On s'assure que le formulaire est réinitialisé à l'ouverture    document.getElementById('form-rapport').reset();
+    // On s'assure que le formulaire est réinitialisé à l'ouverture    
+    document.getElementById('form-rapport').reset();
     afficherZoneDevoirs(false); 
     gererAnnulation(); // Remet l'opacité normale
 }
