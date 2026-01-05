@@ -44,6 +44,29 @@ header p { color: #7f8c8d; font-size: 1.1rem; }
     padding: 12px 0;
     border-bottom: 1px solid #eee;
 }
+/* L'arrière-plan qui assombrit le reste de l'appli */
+.overlay {
+    display: none; /* CACHÉ PAR DÉFAUT */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Noir transparent à 70% */
+    z-index: 999; /* S'assure d'être au-dessus de tout */
+}
+
+/* La boîte blanche centrale */
+.fenetre-contenu {
+    background-color: white;
+    width: 85%;
+    max-width: 350px;
+    margin: 20% auto; /* Place la boîte au milieu */
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
 
 .btn-confirm {
     background-color: #3498db;
