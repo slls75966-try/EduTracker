@@ -50,17 +50,6 @@ function ouvrirMaFenetreold(nomMatiere) {
     volet.style.display = "block";
 }
 
-// Affiche ou cache la zone de texte des devoirs
-function afficherZoneDevoirs(doitAfficher) {
-    const zone = document.getElementById('details-devoirs');
-    if (doitAfficher) {
-        zone.style.display = "block";
-    } else {
-        zone.style.display = "none";
-        document.getElementById('details-devoirs').value = ""; // Vide le texte si on remet sur "Non"
-    }
-}
-
 function ouvrirMaFenetre(nomMatiere, elementBouton) {
     boutonSelectionne = elementBouton; // On mémorise le bouton
     
@@ -82,6 +71,17 @@ function fermerMaFenetre() {
     afficherZoneDevoirs(false);
     
     document.getElementById('groupe-activites').classList.remove('desactive'); 
+}
+
+// Affiche ou cache la zone de texte des devoirs
+function afficherZoneDevoirs(doitAfficher) {
+    const zone = document.getElementById('zone-details-devoirs');
+    if (doitAfficher) {
+        zone.style.display = "block";
+    } else {
+        zone.style.display = "none";
+        document.getElementById('details-devoirs').value = ""; // Vide le texte si on remet sur "Non"
+    }
 }
 
 // 5. Gérer l'affichage si le cours est annulé
