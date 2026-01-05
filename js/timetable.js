@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     list.innerHTML = subjects.map(subject => `
         <li class="subject-item">
             <span>${subject}</span>
-            <button class="btn-confirm" onclick="markAsDone(this)">Confirmer</button>
+            <button class="btn-confirm" onclick="ouvrirMaFenetre('${subject}')">Remplir</button>
         </li>
     `).join('');
 });
