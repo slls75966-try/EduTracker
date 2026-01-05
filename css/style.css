@@ -81,3 +81,33 @@ header p { color: #7f8c8d; font-size: 1.1rem; }
     text-decoration: line-through;
     color: #bdc3c7;
 }
+.grille-choix {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Deux colonnes */
+    gap: 10px;
+    margin: 15px 0;
+    text-align: left;
+}
+
+.section-alerte {
+    background: #fff3cd;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    color: #856404;
+}
+
+.boutons-action {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-principal { background: #2ecc71; color: white; border: none; flex: 2; padding: 10px; border-radius: 5px; }
+.btn-secondaire { background: #95a5a6; color: white; border: none; flex: 1; padding: 10px; border-radius: 5px; }
+
+/* Griser le contenu si le cours est annulé */
+.desactive {
+    opacity: 0.3;
+    pointer-events: none;
+}
