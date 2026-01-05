@@ -34,3 +34,21 @@ function markAsDone(button) {
     button.disabled = true;
     button.style.backgroundColor = "#2ecc71";
 }
+
+// Fonction pour OUVRIR la fenêtre
+function ouvrirMaFenetre(nomMatiere) {
+    // 1. On récupère l'élément du calque par son ID
+    const volet = document.getElementById('mon-volet');
+    
+    // 2. On affiche le nom de la matière dans la fenêtre
+    document.getElementById('nom-matiere-affichage').textContent = "Matière : " + nomMatiere;
+    
+    // 3. On change le style pour le rendre visible
+    volet.style.display = "block";
+}
+
+// Fonction pour FERMER la fenêtre
+function fermerMaFenetre() {
+    const volet = document.getElementById('mon-volet');
+    volet.style.display = "none";
+}
