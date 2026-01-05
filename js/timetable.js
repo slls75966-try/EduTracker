@@ -52,7 +52,7 @@ function ouvrirMaFenetreold(nomMatiere) {
 
 // Affiche ou cache la zone de texte des devoirs
 function afficherZoneDevoirs(doitAfficher) {
-    const zone = document.getElementById('zone-details-devoirs');
+    const zone = document.getElementById('details-devoirs');
     if (doitAfficher) {
         zone.style.display = "block";
     } else {
