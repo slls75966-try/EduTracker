@@ -48,8 +48,11 @@
 
             <p><strong>Devoirs à la maison :</strong></p>
             <div class="choix-devoirs">
-                <label><input type="radio" name="devoirs" value="Oui"> Oui</label>
-                <label><input type="radio" name="devoirs" value="Non" checked> Non</label>
+                <label><input type="radio" name="devoirs" value="Oui" onclick="afficherZoneDevoirs(true)"> Oui</label>
+                <label><input type="radio" name="devoirs" value="Non" checked onclick="afficherZoneDevoirs(false)"> Non</label>
+            </div>
+            <div id="zone-details-devoirs" style="display: none; margin-top: 10px;">
+            <textarea id="details-devoirs" placeholder="Ex: Page 42, exercices 3 et 4..." rows="3" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;"></textarea>
             </div>
         </div>
 
