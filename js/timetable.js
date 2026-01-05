@@ -50,21 +50,38 @@ function ouvrirMaFenetreold(nomMatiere) {
     volet.style.display = "block";
 }
 
+// Affiche ou cache la zone de texte des devoirs
+function afficherZoneDevoirs(doitAfficher) {
+    const zone = document.getElementById('zone-details-devoirs');
+    if (doitAfficher) {
+        zone.style.display = "block";
+    } else {
+        zone.style.display = "none";
+        document.getElementById('details-devoirs').value = ""; // Vide le texte si on remet sur "Non"
+    }
+}
+
 function ouvrirMaFenetre(nomMatiere, elementBouton) {
     boutonSelectionne = elementBouton; // On mémorise le bouton
     
     document.getElementById('nom-matiere-affichage').textContent = nomMatiere;
     document.getElementById('mon-volet').style.display = "block";
     
-    // On s'assure que le formulaire est réinitialisé à l'ouverture
-    document.getElementById('form-rapport').reset();
+    // On s'assure que le formulaire est réinitialisé à l'ouverture    document.getElementById('form-rapport').reset();
+    afficherZoneDevoirs(false); 
     gererAnnulation(); // Remet l'opacité normale
 }
 
 // 4. Fonction pour FERMER la fenêtre
 function fermerMaFenetre() {
-    const volet = document.getElementById('mon-volet');
-    volet.style.display = "none";
+
+    document.getElementById('mon-volet').style.display = "none";
+    document.getElementById('form-rapport').reset();
+    
+    // IMPORTANT : On cache à nouveau la zone des devoirs pour la prochaine ouverture
+    afficherZoneDevoirs(false);
+    
+    document.getElementById('groupe-activites').classList.remove('desactive'); 
 }
 
 // 5. Gérer l'affichage si le cours est annulé
