@@ -52,7 +52,14 @@
                 <label><input type="radio" name="devoirs" value="Non" checked onclick="afficherZoneDevoirs(false)"> Non</label>
             </div>
             <div id="zone-details-devoirs" style="display: none; margin-top: 10px;">
-            <textarea id="details-devoirs" placeholder="Ex: Page 42, exercices 3 et 4..." rows="3" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;"></textarea>
+               <textarea id="details-devoirs" placeholder="Ex: Page 42, exercices 3 et 4..." rows="3" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;"></textarea>
+               <p style="margin-top:10px;"><strong>À remettre quand ?</strong></p>
+                 <select id="echeance-devoir" onchange="verifierEcheancePersonnalisee()" style="width: 100%; padding: 8px; border-radius: 5px;">
+                   <option value="prochaine">À la prochaine séance</option>
+                   <option value="date-fixe">Choisir une date précise...</option>
+                </select>
+    
+                <input type="date" id="date-remise" style="display:none; width: 100%; margin-top:10px; padding: 8px; border-radius: 5px; border: 1px solid #ddd;">
             </div>
         </div>
 
