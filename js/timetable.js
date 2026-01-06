@@ -98,6 +98,21 @@ function verifierEcheancePersonnalisee() {
     }
 }
 
+let imagesTemporaires = {}; // Pour stocker les images avant l'enregistrement final
+
+function toggleActiviteDetails(checkbox) {
+    const detailsDiv = checkbox.parentElement.nextElementSibling;
+    if (checkbox.checked) {
+        detailsDiv.style.display = "flex"; // Utiliser flex pour aligner les éléments
+    } else {
+        detailsDiv.style.display = "none";
+        // Réinitialiser le statut photo et l'image temporaire si l'activité est décochée
+        const inputPhoto = detailsDiv.querySelector('input[type="file"]');
+        inputPhoto.value = ''; // Réinitialise l'input file
+        detailsDiv.querySelector('.photo-status').style.display = 'none';
+        delete imagesTemporaires[checkbox.value]; // Supprime l'image de la mémoire temporaire
+    }
+}
 // 5. Gérer l'affichage si le cours est annulé
 function gererAnnulation() {
     const estAnnule = document.getElementById('cours-annule').checked;
