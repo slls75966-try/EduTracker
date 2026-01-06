@@ -72,6 +72,7 @@ function fermerMaFenetre() {
     afficherZoneDevoirs(false);
     
     document.getElementById('groupe-activites').classList.remove('desactive'); 
+    document.getElementById('date-remise').style.display = "none";
 }
 
 // Affiche ou cache la zone de texte des devoirs
@@ -82,6 +83,18 @@ function afficherZoneDevoirs(doitAfficher) {
     } else {
         zone.style.display = "none";
         document.getElementById('details-devoirs').value = ""; // Vide le texte si on remet sur "Non"
+    }
+}
+
+function verifierEcheancePersonnalisee() {
+    const choix = document.getElementById('echeance-devoir').value;
+    const champDate = document.getElementById('date-remise');
+    
+    if (choix === "date-fixe") {
+        champDate.style.display = "block";
+    } else {
+        champDate.style.display = "none";
+        champDate.value = ""; // Réinitialise la date
     }
 }
 
