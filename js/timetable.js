@@ -113,6 +113,11 @@ function toggleActiviteDetails(checkbox) {
         delete imagesTemporaires[checkbox.value]; // Supprime l'image de la mémoire temporaire
     }
 }
+
+function triggerFileUpload(button) {
+    const inputPhoto = button.nextElementSibling; // L'input file caché
+    inputPhoto.click(); // Simule un clic sur l'input file
+}
 // 5. Gérer l'affichage si le cours est annulé
 function gererAnnulation() {
     const estAnnule = document.getElementById('cours-annule').checked;
