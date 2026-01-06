@@ -9,6 +9,16 @@ const timetable = {
     "dimanche": ["Maths", "Français"]
 };
 
+// 2. Liste des types d'activités prédéfinies
+const typesActivites = [
+    "Nouvelle leçon",
+    "Exercices",
+    "Correction",
+    "Examens",
+    "Révision",
+    "Rattrapage"
+];
+
 // Variable globale pour mémoriser sur quel bouton on a cliqué
 let boutonSelectionne = null;
 
@@ -54,6 +64,8 @@ function ouvrirMaFenetre(nomMatiere, elementBouton) {
     boutonSelectionne = elementBouton; // On mémorise le bouton
     
     document.getElementById('nom-matiere-affichage').textContent = nomMatiere;
+     // ON GÉNÈRE LA LISTE DES ACTIVITÉS ICI
+    genererFormulaireActivites();
     document.getElementById('mon-volet').style.display = "block";
     
     // On s'assure que le formulaire est réinitialisé à l'ouverture    
@@ -130,6 +142,39 @@ function handleImageUpload(input) {
         };
         reader.readAsDataURL(file); // Convertit l'image en Base64
     }
+}
+// 2. Fonction pour générer le HTML de la grille
+function genererFormulaireActivites() {
+    const conteneur = document.getElementById('grille-activites-dynamique');
+    
+    // On vide le conteneur avant de remplir
+    conteneur.innerHTML = "";
+
+    // On boucle sur chaque type d'activité
+    typesActivites.forEach(type => {
+        const idUnique = type.replace(/\s+/g, '-').toLowerCase(); // transforme "Nouvelle leçon" en "nouvelle-leçon"
+        
+        const blocHtml = `
+        <div class="bloc-activite">
+                <label>
+                    <input type="checkbox" value="${type}" onchange="toggleActiviteDetails(this)"> 
+                    ${type}
+                </label>
+                <div class="details-activite" style="display:none;">
+                    <select class="select-niveau">
+                        <option value="facile">Facile ✅</option>
+                        <option value="moyen" selected>Compris 🆗</option>
+                        <option value="difficile">Difficile ❌</option>
+                    </select>
+                    
+                    <button type="button" class="btn-photo" onclick="triggerFileUpload(this)">📸 Photo</button>
+                    <input type="file" accept="image/*" capture="camera" style="display:none;" onchange="handleImageUpload(this)">
+                    <span class="photo-status" style="display:none; color: green; font-size: 0.8em;">Fichier ajouté</span>
+                </div>
+            </div>
+        `;
+        conteneur.insertAdjacentHTML('beforeend', blocHtml);
+    });
 }
 // 5. Gérer l'affichage si le cours est annulé
 function gererAnnulation() {
