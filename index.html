@@ -40,11 +40,22 @@
         <div id="groupe-activites">
             <p><strong>Activités faites :</strong></p>
             <div class="grille-choix">
+               <label><input type="checkbox" value="Leçon" onchange="toggleActiviteDetails(this)"> Leçon</label>
+               <div class="details-activite" style="display:none;">
+                 <select class="select-niveau">
+                   <option value="facile">Facile ✅</option>
+                   <option value="moyen" selected>Compris 🆗</option>
+                   <option value="difficile">Difficile ❌</option>
+                </select>
+                <button type="button" class="btn-photo" onclick="triggerFileUpload(this)">📸 Photo</button>
+                <input type="file" accept="image/*" capture="camera" style="display:none;" onchange="handleImageUpload(this)">
+                <span class="photo-status" style="display:none; color: green; font-size: 0.8em;">Photo ajoutée ✅</span>
+                </div>
                 <label><input type="checkbox" value="Leçon"> Leçon</label>
                 <label><input type="checkbox" value="Exercices"> Exercices</label>
                 <label><input type="checkbox" value="Examen"> Examen</label>
                 <label><input type="checkbox" value="Révision"> Révision</label>
-            </div>
+              </div>
             
             <p><strong>Y a-t-il des devoirs ?</strong></p>
             <div class="radio-group">
