@@ -118,6 +118,19 @@ function triggerFileUpload(button) {
     const inputPhoto = button.nextElementSibling; // L'input file caché
     inputPhoto.click(); // Simule un clic sur l'input file
 }
+function handleImageUpload(input) {
+    if (input.files && input.files[0]) {
+        const file = input.files[0];
+        const reader = new FileReader();
+        const activiteName = input.closest('.bloc-activite').querySelector('input[type="checkbox"]').value;
+
+        reader.onload = function(e) {
+            imagesTemporaires[activiteName] = e.target.result; // Stocke l'image encodée en Base64
+            input.nextElementSibling.style.display = 'inline'; // Affiche le statut "Photo ajoutée"
+        };
+        reader.readAsDataURL(file); // Convertit l'image en Base64
+    }
+}
 // 5. Gérer l'affichage si le cours est annulé
 function gererAnnulation() {
     const estAnnule = document.getElementById('cours-annule').checked;
