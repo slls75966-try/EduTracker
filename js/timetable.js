@@ -199,7 +199,7 @@ async function validerEtEnregistrer() {
     const nomMatiere = document.getElementById('nom-matiere-affichage').textContent;
     const dateJour = new Date().toLocaleDateString('fr-CA'); // Format YYYY-MM-DD
     
-    alert("Merci bien.");
+    alert("Merci beaucoup.");
     alert(dateJour);
 }
 // --- FONCTION ENREGISTRER ---
