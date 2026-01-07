@@ -185,15 +185,24 @@ function annulerRapport() {
     console.log("Action annulée par l'utilisateur");
 }
 // --- FONCTION ENREGISTRER ---
-async function validerEtEnregistrer1() {
+async function validerEtEnregistrer() {
     const nomMatiere = document.getElementById('nom-matiere-affichage').textContent;
     const dateJour = new Date().toLocaleDateString('fr-CA'); // Format YYYY-MM-DD
     
     alert("Merci beaucoup.");
+    
+     // 3. Construction de l'objet complet
+    const rapportFinal = {
+        id: `${dateJour}_${nomMatiere}`,
+        matiere: nomMatiere,
+        date: dateJour,
+        activites: "activitesChoisies",
+        coursAnnule: 'cours-annule'
+    };
     alert(dateJour);
 }
 // --- FONCTION ENREGISTRER ---
-async function validerEtEnregistrer() {
+async function validerEtEnregistrer1() {
     const nomMatiere = document.getElementById('nom-matiere-affichage').textContent;
     const dateJour = new Date().toLocaleDateString('fr-CA'); // Format YYYY-MM-DD
     
