@@ -188,6 +188,12 @@ function gererAnnulation() {
     }
 }
 
+// --- FONCTION ANNULER Rapport ---
+function annulerRapport() {
+    // On ferme juste la fenêtre et on réinitialise le formulaire
+    fermerMaFenetre();
+    console.log("Action annulée par l'utilisateur");
+}
 
 // 6. Gérer l'ENREGISTREMENT du formulaire
 document.getElementById('form-rapport').onsubmit = function(event) {
