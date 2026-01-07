@@ -194,6 +194,66 @@ function annulerRapport() {
     fermerMaFenetre();
     console.log("Action annulée par l'utilisateur");
 }
+// --- FONCTION ENREGISTRER ---
+async function validerEtEnregistrer() {
+    const nomMatiere = document.getElementById('nom-matiere-affichage').textContent;
+    const dateJour = new Date().toLocaleDateString('fr-CA'); // Format YYYY-MM-DD
+    
+    // 1. Récupération des activités (Boucle sur les blocs générés)
+    let activitesChoisies = [];
+    const blocs = document.querySelectorAll('.bloc-activite');
+    blocs.forEach(bloc => {
+        const checkbox = bloc.querySelector('input[type="checkbox"]');
+        if (checkbox.checked) {
+            const niveau = bloc.querySelector('.select-niveau').value;
+            const typeAct = checkbox.value;
+            
+            activitesChoisies.push({
+                type: typeAct,
+                assimilation: niveau,
+                // On récupère la photo si elle a été stockée dans notre variable temporaire
+                photo: photosTemporaires[typeAct] || null 
+            });
+        }
+    });
+    // 2. Récupération des devoirs
+    const aDesDevoirs = document.querySelector('input[name="devoirs"]:checked').value === "Oui";
+    const detailsDevoirs = document.getElementById('details-devoirs').value;
+    const echeance = document.getElementById('echeance-devoir').value;
+    const dateFixe = document.getElementById('date-remise').value;
+
+    // 3. Construction de l'objet complet
+    const rapportFinal = {
+        id: `${dateJour}_${nomMatiere}`,
+        matiere: nomMatiere,
+        date: dateJour,
+        activites: activitesChoisies,
+        devoirs: {
+            present: aDesDevoirs,
+            details: detailsDevoirs,
+            echeance: echeance,
+            dateSpecifique: (echeance === "date-fixe") ? dateFixe : null
+        },
+        coursAnnule: document.getElementById('cours-annule').checked
+    };
+    // 4. Appel à la base de données
+    try {
+        await enregistrerRapportDansDB(rapportFinal);
+        
+        // Mise à jour visuelle de l'interface
+        if (boutonSelectionne) {
+            boutonSelectionne.textContent = "Fait ✅";
+            boutonSelectionne.disabled = true;
+            boutonSelectionne.parentElement.classList.add('done');
+        }
+        
+        alert("Rapport de " + nomMatiere + " enregistré !");
+        fermerMaFenetre();
+     } catch (erreur) {
+        console.error("Erreur de sauvegarde:", erreur);
+        alert("Erreur lors de l'enregistrement local.");
+    }
+}
 
 // 6. Gérer l'ENREGISTREMENT du formulaire
 document.getElementById('form-rapport').onsubmit = function(event) {
