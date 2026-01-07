@@ -49,16 +49,6 @@ function markAsDone(button) {
 }
 
 // Fonction pour OUVRIR la fenêtre
-function ouvrirMaFenetreold(nomMatiere) {
-    // 1. On récupère l'élément du calque par son ID
-    const volet = document.getElementById('mon-volet');
-    
-    // 2. On affiche le nom de la matière dans la fenêtre
-    document.getElementById('nom-matiere-affichage').textContent = "Matière : " + nomMatiere;
-    
-    // 3. On change le style pour le rendre visible
-    volet.style.display = "block";
-}
 
 function ouvrirMaFenetre(nomMatiere, elementBouton) {
     boutonSelectionne = elementBouton; // On mémorise le bouton
@@ -263,30 +253,4 @@ async function validerEtEnregistrer() {
     }
 }
 
-// 6. Gérer l'ENREGISTREMENT du formulaire
-document.getElementById('form-rapport').onsubmit = function(event) {
-    event.preventDefault(); // Empêche le rechargement de la page
-
-    const estAnnule = document.getElementById('cours-annule').checked;
-
-    if (boutonSelectionne) {
-        const ligneMatiere = boutonSelectionne.parentElement;
-
-        if (estAnnule) {
-            // Style si le cours n'a pas eu lieu
-            ligneMatiere.style.color = "#e74c3c"; // Rouge
-            boutonSelectionne.textContent = "Annulé ❌";
-        } else {
-            // Style si le cours est fait
-            ligneMatiere.classList.add('done'); // Utilise la classe CSS .done
-            boutonSelectionne.textContent = "Fait ✅";
-            boutonSelectionne.style.backgroundColor = "#95a5a6";
-        }
-
-        // Désactiver le bouton après validation
-        boutonSelectionne.disabled = true;
-    }
-
-    // Fermer la fenêtre après l'enregistrement
-    fermerMaFenetre();
 };
