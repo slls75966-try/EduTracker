@@ -195,7 +195,7 @@ function annulerRapport() {
     console.log("Action annulée par l'utilisateur");
 }
 // --- FONCTION ENREGISTRER ---
-async function validerEtEnregistrer() {
+async function validerEtEnregistrer1() {
     const nomMatiere = document.getElementById('nom-matiere-affichage').textContent;
     const dateJour = new Date().toLocaleDateString('fr-CA'); // Format YYYY-MM-DD
     
@@ -203,7 +203,7 @@ async function validerEtEnregistrer() {
     alert(dateJour);
 }
 // --- FONCTION ENREGISTRER ---
-async function validerEtEnregistrer1() {
+async function validerEtEnregistrer() {
     const nomMatiere = document.getElementById('nom-matiere-affichage').textContent;
     const dateJour = new Date().toLocaleDateString('fr-CA'); // Format YYYY-MM-DD
     
