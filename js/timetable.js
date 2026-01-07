@@ -189,7 +189,7 @@ async function validerEtEnregistrer() {
     const nomMatiere = document.getElementById('nom-matiere-affichage').textContent;
     const dateJour = new Date().toLocaleDateString('fr-CA'); // Format YYYY-MM-DD
     
-    alert("Merci beaucoup.");
+    alert("Merci bien.");
     
      // 3. Construction de l'objet complet
     const rapportFinal = {
@@ -200,6 +200,8 @@ async function validerEtEnregistrer() {
         coursAnnule: 'cours-annule'
     };
     alert(dateJour);
+    alert("Rapport de " + nomMatiere + " enregistré !");
+    fermerMaFenetre();
 }
 // --- FONCTION ENREGISTRER ---
 async function validerEtEnregistrer1() {
