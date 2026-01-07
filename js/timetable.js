@@ -196,6 +196,10 @@ function annulerRapport() {
 }
 // --- FONCTION ENREGISTRER ---
 async function validerEtEnregistrer() {
+    alert("Merci bien.")
+}
+// --- FONCTION ENREGISTRER ---
+async function validerEtEnregistrer1() {
     const nomMatiere = document.getElementById('nom-matiere-affichage').textContent;
     const dateJour = new Date().toLocaleDateString('fr-CA'); // Format YYYY-MM-DD
     
